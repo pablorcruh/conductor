@@ -10,4 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ConductorDTOResponse {
+    private String name;
+    private String apellido;
+    private String rut;
 }

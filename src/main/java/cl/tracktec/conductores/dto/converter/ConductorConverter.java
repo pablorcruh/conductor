@@ -13,7 +13,11 @@ public class ConductorConverter {
     private ModelMapper modelMapper;
 
     public ConductorDTOResponse conductorDTOResponse(Conductor condutor){
-        ConductorDTOResponse response = ConductorDTOResponse.builder().build();
+        ConductorDTOResponse response = ConductorDTOResponse.builder()
+                .rut(condutor.getRut())
+                .apellido(condutor.getApellido())
+                .name(condutor.getNombre())
+                .build();
         return response;
     }
 }
