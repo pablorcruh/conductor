@@ -27,4 +27,14 @@ public class ConductorServiceImpl implements ConductorService{
                 .map(conducutor -> this.conductorConverter.conductorDTOResponse(conducutor)).collect(Collectors.toList());
         return response;
     }
+
+    @Override
+    public ConductorDTOResponse getConductorByCodigoIdentificacion(String codigoIdentificacion) {
+        Conductor conductor = conductorRepository.findByCodigoIdentificacion(codigoIdentificacion);
+        if(conductor !=null){
+            ConductorDTOResponse response = conductorConverter.conductorDTOResponse(conductor);
+            return response;
+        }
+        return null;
+    }
 }

@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ConductorService {
     List<ConductorDTOResponse> findAll();
+
+    ConductorDTOResponse getConductorByCodigoIdentificacion(String codigoIdentificacion);
 }
