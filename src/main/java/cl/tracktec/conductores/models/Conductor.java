@@ -2,20 +2,23 @@ package cl.tracktec.conductores.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
-@Entity
 @Table(name = "conductor")
-@NoArgsConstructor
 @Data
-public class Conductor {
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+public class Conductor extends BaseEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
     @Column
     private String rut;
     @Column
@@ -37,4 +40,9 @@ public class Conductor {
     @Column
     private String idDispositivoIdentificador;
 
+    @OneToMany(mappedBy = "conductor")
+    private Set<Conduccion> conducciones = new HashSet<>();
+
+    @ManyToMany(mappedBy = "conductores")
+    private Set<DispositivoIdentificacion> dispositivosIdentificacion = new HashSet<>();
 }
